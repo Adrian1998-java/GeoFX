@@ -1,7 +1,7 @@
 package dad.geofx.app;
 
+import dad.geofx.api.GeoService;
 import dad.geofx.controller.MainController;
-import dad.geofx.model.GeoService;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

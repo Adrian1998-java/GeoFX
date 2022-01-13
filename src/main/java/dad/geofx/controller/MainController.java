@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.google.gson.Gson;
+
+import dad.geofx.api.GeoService;
+import dad.geofx.model.Example;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -17,21 +23,23 @@ import javafx.scene.layout.BorderPane;
 
 public class MainController implements Initializable {
 
-	
-	//Model
+	// Model
 	private LocationController locationController = new LocationController();
 	private ConnectionController connectionController = new ConnectionController();
 	private SecurityController securityController = new SecurityController();
-	
+
 	private StringProperty IP = new SimpleStringProperty();
+
+	private GeoService geoService = new GeoService();
 	
-//	private static final String BASE_URL = "http://api.ipapi.com/";
-//	+IP+"?access_key=107f87c16d92602ec3fd52fbd82a1f35";
-	
-	//IP usable
-	//https://ipapi.com/ip_api.php?ip={ip}
-	
-	//View
+	private ObjectProperty<Example> example = new SimpleObjectProperty<Example>();
+
+	private static final String BASE_URL = "https://ipapi.com/ip_api.php?ip=";
+
+	// IP usable
+	// https://ipapi.com/ip_api.php?ip={ip}
+
+	// View
 	@FXML
 	private TextField IPTextfield;
 
@@ -57,25 +65,29 @@ public class MainController implements Initializable {
 	}
 
 	public void initialize(URL location, ResourceBundle resources) {
-		//Tabs
+		// Tabs
 		locationTab.setContent(locationController.getView());
 		connectionTab.setContent(connectionController.getView());
 		securityTab.setContent(securityController.getView());
 
-		//TextFielIP
-		IPTextfield.setText("78.30.26.41");
-		
-		
-		//API key -> 107f87c16d92602ec3fd52fbd82a1f35
+		// TextFielIP
+		IPTextfield.setText("8.8.8.8");
 	}
-	
+
 	public BorderPane getView() {
 		return view;
 	}
-	
+
 	@FXML
 	void onCheckButton(ActionEvent event) {
-
+		try {
+			System.out.println(geoService.ConnectionData(IP.getValue()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Gson gson = new Gson();
+//		gson.fromJson("GsonenCrudo", Example.class)
 	}
 
 }

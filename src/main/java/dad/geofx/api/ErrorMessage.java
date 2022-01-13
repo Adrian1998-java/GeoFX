@@ -1,4 +1,4 @@
-package dad.geofx.model;
+package dad.geofx.api;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
