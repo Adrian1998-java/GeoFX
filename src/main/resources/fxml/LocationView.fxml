@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="view" hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vgap="5.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<GridPane fx:id="view" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" vgap="5.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
     <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
@@ -23,7 +23,7 @@
       <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <VBox>
+      <VBox GridPane.hgrow="ALWAYS">
          <children>
             <Label text="LATITUDE">
                <font>
@@ -33,7 +33,7 @@
             <Label fx:id="latitudeLabel" text="latitudeLabel" />
          </children>
       </VBox>
-      <VBox GridPane.columnIndex="1">
+      <VBox GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
          <children>
             <Label text="LONGITUDE">
                <font>
@@ -43,7 +43,7 @@
             <Label fx:id="longitudeLabel" text="longitudeLabel" />
          </children>
       </VBox>
-      <VBox GridPane.rowIndex="2">
+      <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
          <children>
             <Label text="CITY, STATE">
                <font>
@@ -53,7 +53,7 @@
             <Label fx:id="cityStateLabel" text="city,state" />
          </children>
       </VBox>
-      <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <VBox GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
          <children>
             <Label text="ZIP CODE">
                <font>
@@ -63,7 +63,7 @@
             <Label fx:id="zipLabel" text="zipcode" />
          </children>
       </VBox>
-      <VBox GridPane.rowIndex="3">
+      <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
          <children>
             <Label text="LANGUAJE">
                <font>
@@ -73,7 +73,7 @@
             <Label fx:id="languajeLabel" text="Languaje" />
          </children>
       </VBox>
-      <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <VBox GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
          <children>
             <Label text="TIME ZONE">
                <font>
@@ -83,7 +83,7 @@
             <Label fx:id="timeZoneLabel" text="timezone+" />
          </children>
       </VBox>
-      <VBox GridPane.rowIndex="4">
+      <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
          <children>
             <Label text="CALLING CODE">
                <font>
@@ -93,7 +93,7 @@
             <Label fx:id="callingLabel" text="callingcode" />
          </children>
       </VBox>
-      <VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <VBox GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4">
          <children>
             <Label text="CURRENCY">
                <font>
@@ -103,7 +103,7 @@
             <Label fx:id="currencyLabel" text="currency" />
          </children>
       </VBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
          <children>
             <Label text="IP LOCATION: ">
                <font>
@@ -111,7 +111,7 @@
                </font>
             </Label>
             <Label fx:id="IPLabel" text="IPLOCATION" />
-            <ImageView fx:id="flagLabel" fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="flagLabel" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
    </children>

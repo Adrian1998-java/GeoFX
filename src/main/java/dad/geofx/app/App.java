@@ -17,7 +17,7 @@ public class App extends Application {
 		
 		primaryStage.setTitle("GeoFX");
 		primaryStage.setScene(new Scene(controller.getView(), 500, 400));
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
 		primaryStage.show();
 		
 	}
