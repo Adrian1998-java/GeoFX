@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import com.google.gson.Gson;
 
-import dad.geofx.api.GeoService;
 import dad.geofx.model.Example;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -35,7 +34,7 @@ public class MainController implements Initializable {
 	private StringProperty IP = new SimpleStringProperty();
 
 //	private GeoService geoService = new GeoService();
-	
+
 	private ObjectProperty<Example> example = new SimpleObjectProperty<Example>();
 
 	private static final String BASE_URL = "https://ipapi.com/ip_api.php?ip=";
@@ -77,20 +76,18 @@ public class MainController implements Initializable {
 		// TextFielIP
 		IPTextfield.textProperty().bindBidirectional(IP);
 		IPTextfield.setText("8.8.8.8");
-		
-		//Inicializamos
+
+		// Inicializamos
 		example.addListener((o, ov, nv) -> onExampleChanged(o, ov, nv));
 	}
 
 	private void onExampleChanged(ObservableValue<? extends Example> o, Example ov, Example nv) {
-		if(nv != null)
-		{
+		if (nv != null) {
 			locationController.exampleProperty().bind(example);
 			connectionController.exampleProperty().bind(example);
 			securityController.exampleProperty().bind(example);
 		}
-		if(ov != null)
-		{
+		if (ov != null) {
 			locationController.exampleProperty().unbind();
 			connectionController.exampleProperty().unbind();
 			securityController.exampleProperty().unbind();
@@ -114,40 +111,31 @@ public class MainController implements Initializable {
 		try {
 			OkHttpClient client = new OkHttpClient();
 
-	        Request request = new Request.Builder()
-	            .url("https://ipapi.com/ip_api.php?ip="+IP.get())
-	            .get()
-	            .build();
+			Request request = new Request.Builder().url("https://ipapi.com/ip_api.php?ip=" + IP.get()).get().build();
 
-	        Response response = client.newCall(request).execute();
+			Response response = client.newCall(request).execute();
 
-	        String json = response.body().string();
-	        
-	        System.out.println(json);
-	        
-	        Gson gson = new Gson();
-	        
-	        example.set(gson.fromJson(json, Example.class));
-		}catch(Exception e) {
-			System.err.println("Ocurrio el siguiente error: "+e);
+			String json = response.body().string();
+
+			Gson gson = new Gson();
+
+			example.set(gson.fromJson(json, Example.class));
+		} catch (Exception e) {
+			System.err.println("Ocurrio el siguiente error: " + e);
 		}
-		
-	
+
 	}
 
 	public final ObjectProperty<Example> exampleProperty() {
 		return this.example;
 	}
-	
 
 	public final Example getExample() {
 		return this.exampleProperty().get();
 	}
-	
 
 	public final void setExample(final Example example) {
 		this.exampleProperty().set(example);
 	}
-	
 
 }
