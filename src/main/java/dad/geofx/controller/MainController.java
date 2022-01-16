@@ -3,6 +3,7 @@ package dad.geofx.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 
@@ -75,7 +76,12 @@ public class MainController implements Initializable {
 
 		// TextFielIP
 		IPTextfield.textProperty().bindBidirectional(IP);
-		IPTextfield.setText("8.8.8.8");
+		try (java.util.Scanner s = new java.util.Scanner(new java.net.URL("https://api.ipify.org").openStream(), "UTF-8").useDelimiter("\\A")) {
+		    IP.set(s.next());
+		} catch (java.io.IOException e) {
+		    e.printStackTrace();
+		}
+		
 
 		// Inicializamos
 		example.addListener((o, ov, nv) -> onExampleChanged(o, ov, nv));
