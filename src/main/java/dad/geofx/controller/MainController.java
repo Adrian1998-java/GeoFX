@@ -122,6 +122,7 @@ public class MainController implements Initializable {
 			Response response = client.newCall(request).execute();
 
 			String json = response.body().string();
+			System.out.println(json);
 
 			Gson gson = new Gson();
 

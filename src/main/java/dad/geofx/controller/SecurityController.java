@@ -57,7 +57,7 @@ public class SecurityController implements Initializable {
 
 	private void onExampleChanged(ObservableValue<? extends Example> o, Example ov, Example nv) {
 		if (nv != null) {
-			IPSafeLabel.setText(nv.getSecurity().getThreatLevel());
+			
 			proxyCheck.setSelected(nv.getSecurity().getIsProxy());
 			torCheck.setSelected(nv.getSecurity().getIsTor());
 			crawlerCheck.setSelected(nv.getSecurity().getIsCrawler());
@@ -68,6 +68,14 @@ public class SecurityController implements Initializable {
 			else
 			{
 				potentialThreatsLabel.setText("One or more threats were detected!");
+			}
+			if((!nv.getSecurity().getIsCrawler())&&(!nv.getSecurity().getIsProxy())&&(!nv.getSecurity().getIsTor()))
+			{
+				IPSafeLabel.setText("This IP is safe. No threats have been detected");
+			}
+			else
+			{
+				IPSafeLabel.setText("This IP is NOT safe. One or more threats have been detected");
 			}
 		}
 
